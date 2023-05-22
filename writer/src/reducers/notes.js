@@ -203,11 +203,24 @@ export default {
       })
       .addCase(saveNoteContent, (draft, { payload }) => {
         let md = "";
+<<<<<<< HEAD
+=======
+        let title = "";
+>>>>>>> 10a067ecaca2bee96c254f170c53d28b3a4709be
         if (payload.content) {
           try {
             md = turndown.turndown(
               payload.content.replace(/<h1.*?>.*?<\/h1>/g, "")
             );
+<<<<<<< HEAD
+=======
+
+            // get <h1> content from payload.content
+            const h1 = payload.content.match(/<h1.*?>(.*?)<\/h1>/);
+            if (h1 && h1[1]) {
+              title = h1[1];
+            }
+>>>>>>> 10a067ecaca2bee96c254f170c53d28b3a4709be
           } catch (e) {
             console.log(e);
           }
@@ -216,7 +229,11 @@ export default {
         fuse.remove((doc) => doc.id === payload.id);
         fuse.add({
           id: payload.id,
+<<<<<<< HEAD
           title: (draft.notesMap[payload.id] || {}).title,
+=======
+          title: title || "",
+>>>>>>> 10a067ecaca2bee96c254f170c53d28b3a4709be
           md: (md || "").replace(/!\[.*?\]\(.*?\)/g, ""),
         });
 
@@ -227,6 +244,10 @@ export default {
             html: payload.content,
             updated_at: Date.now(),
             md,
+<<<<<<< HEAD
+=======
+            title: title || "",
+>>>>>>> 10a067ecaca2bee96c254f170c53d28b3a4709be
           }
         );
       });

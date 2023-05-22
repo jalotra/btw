@@ -145,7 +145,7 @@ function Sidebar(props) {
   if (token) {
     return (
       <>
-        {contextMenu ? (
+        {contextMenu && notesState.notesMap[contextNoteId].ydoc ? (
           <div
             className={`${
               sidebarIsOpen ? "hidden" : "absolute"
@@ -288,7 +288,12 @@ function Sidebar(props) {
             </div>
           </div>
         ) : null}
+<<<<<<< HEAD
         <div className="w-full mb-8 border-gray-200 sidebar-toolkit flex items-center">
+=======
+
+        <div className="space-x-2 w-full mb-8 border-gray-200 sidebar-toolkit flex items-center">
+>>>>>>> 10a067ecaca2bee96c254f170c53d28b3a4709be
           <div className="flex-grow">
             <div className="relative rounded-md shadow-sm">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2">
